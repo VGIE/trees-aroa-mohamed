@@ -39,17 +39,20 @@ namespace Trees
 
         public TreeNode<T> Add(T value)
         {
-            //TODO #4: Add a new instance of class GenericTreeNode<T> with Value=value. Return the instance we just created
-            
-            return null;
-            
+            //TODO #4: Add a new instance of class GenericTreeNode<T> with Value=value. Return the instance we just create
+            TreeNode<T> Value = new TreeNode<T>(value);    
         }
 
         public int Count()
         {
             //TODO #5: Return the total number of elements in this tree
-            
-            return 0;
+            int cnt=0;
+            foreach(TreeNode<T> vl in Value ){
+              while (vl != null){
+              cnt++;
+              }
+            }
+            return cnt;
             
         }
 
