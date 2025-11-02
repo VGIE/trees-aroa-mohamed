@@ -13,26 +13,25 @@ namespace Trees
         public TreeNode(T value)
         {
             //TODO #2: Initialize member variables/attributes
-            
+            Value= value;
+            Children = new List<TreeNode<T>>();
         }
 
         public string ToString(int depth, int index)
         {
-            //TODO #3: Uncomment the code below
+            TODO #3: Uncomment the code below
             
-            //string output = null;
-            //string leftSpace = null;
-            //for (int i = 0; i < depth; i++) leftSpace += " ";
-            //if (leftSpace != null) leftSpace += "->";
-
-            //output += $"{leftSpace}[{Value}]\n";
-
-            //for (int childIndex = 0; childIndex < Children.Count(); childIndex++)
-            //{
-            //    TreeNode<T> child = Children.Get(childIndex);
-            //    output += child.ToString(depth + 1, childIndex);
-            //}
-            //return output;
+            string output = null;
+            string leftSpace = null;
+            for (int i = 0; i < depth; i++) leftSpace += " ";
+            if (leftSpace != null) leftSpace += "->";
+            output += $"{leftSpace}[{Value}]\n";
+            for (int childIndex = 0; childIndex < Children.Count(); childIndex++)
+            {
+                TreeNode<T> child = Children.Get(childIndex);
+                output += child.ToString(depth + 1, childIndex);
+            }
+            return output;
             
             return null;
         }
@@ -40,17 +39,15 @@ namespace Trees
         public TreeNode<T> Add(T value)
         {
             //TODO #4: Add a new instance of class GenericTreeNode<T> with Value=value. Return the instance we just create
-            TreeNode<T> Value = new TreeNode<T>(value);    
+            TreeNode<T> Value = new TreeNode<T>(value);  
         }
 
         public int Count()
         {
             //TODO #5: Return the total number of elements in this tree
             int cnt=0;
-            foreach(TreeNode<T> vl in Value ){
-              while (vl != null){
-              cnt++;
-              }
+            foreach(TreeNode<T> children in Children ){
+              cnt+=child.Count();
             }
             return cnt;
             
@@ -59,9 +56,20 @@ namespace Trees
         public int Height()
         {
             //TODO #6: Return the height of this tree
-            
-            return 0;
-            
+          if(Children.Count==0)
+          {
+           return 1;
+          }
+          int maxHeight=0;
+          foreach(TreeNode<T> child in Children)
+          {
+          int childH = child.Height();
+          if(childH>maxHeight)
+          {
+          maxHeight=childH;
+          }
+          }
+            return maxHeight+1;
         }
 
         
