@@ -1,5 +1,6 @@
 
 using System;
+using System.Text.RegularExpressions;
 namespace BinaryTrees
 {
     public class BinaryTreeNode<TKey, TValue> where TKey : IComparable<TKey>
@@ -12,7 +13,10 @@ namespace BinaryTrees
         public BinaryTreeNode(TKey key, TValue value)
         {
             //TODO #1: Initialize member variables/attributes
-            
+            Key = key;
+            Value = value;
+            LeftChild = null;
+            RightChild = null;
         }
 
         public string ToString(int depth)
