@@ -129,10 +129,10 @@ namespace Trees
                 else
                 {   
          
-                TreeNode<T> eliminado = Children.Get(i).Find(value); 
+                TreeNode<T> eliminate = Children.Get(i).Find(value); 
                 if (eliminado != null)
                 {
-                  return eliminado; 
+                  return eliminate; 
                 }
                 }
             }
