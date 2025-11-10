@@ -17,15 +17,25 @@ namespace BinaryTrees
         public int Count()
         {
             if (RootNode == null)
+            {
                 return 0;
-            return RootNode.Count();
+            }
+            else
+            {
+                return RootNode.Count();
+            }
         }
 
         public int Height()
         {
             if (RootNode == null)
+            {
                 return 0;
-            return RootNode.Height();
+            }
+            else
+            {
+                return RootNode.Height();
+            }
         }
 
         public TValue Get(TKey key)
@@ -87,7 +97,9 @@ namespace BinaryTrees
         public void Balance()
         {
             if (RootNode == null)
+            {
                 return;
+            }
             TKey[] keys = Keys();
             TValue[] values = Values();
 
