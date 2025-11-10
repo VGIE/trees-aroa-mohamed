@@ -14,6 +14,10 @@ namespace BinaryTrees
             //TODO #1: Initialize member variables/attributes
             Key = key;
             Value = value;
+            Key = key;
+            Value = value;
+            LeftChild = null;
+            RightChild = null;
         }
 
         public string ToString(int depth)
@@ -72,6 +76,26 @@ namespace BinaryTrees
             {
                 Value = node.Value;
             }
+            int cmp = node.Key.CompareTo(Key);
+
+            if (cmp < 0) 
+            {
+                if (LeftChild == null)
+                    LeftChild = node;
+                else
+                    LeftChild.Add(node);
+            }
+            else if (cmp > 0) 
+            {
+                if (RightChild == null)
+                    RightChild = node;
+                else
+                    RightChild.Add(node);
+            }
+            else 
+            {
+                Value = node.Value;
+            }
         }
 
         public int Count()
@@ -89,6 +113,12 @@ namespace BinaryTrees
             }
             return countL+countR+1;
             
+              int count = 1; // count this node
+            if (LeftChild != null)
+                count += LeftChild.Count();
+            if (RightChild != null)
+                count += RightChild.Count();
+            return count;  
         }
 
         public int Height()
@@ -123,6 +153,10 @@ namespace BinaryTrees
                 Maxheigth = hl;
             }
             return Maxheigth;
+            int leftHeight = LeftChild?.Height() ?? 0;
+            int rightHeight = RightChild?.Height() ?? 0;
+            return 1 + Math.Max(leftHeight, rightHeight);
+            return 0;
             
         }
 
@@ -163,6 +197,22 @@ namespace BinaryTrees
             }
         
                 return valor;
+            int cmp = key.CompareTo(Key);
+
+            if (cmp < 0) // look left
+            {
+                if (LeftChild == null) return default;
+                return LeftChild.Get(key);
+            }
+            else if (cmp > 0) // look right
+            {
+                if (RightChild == null) return default;
+                return RightChild.Get(key);
+            }
+            else // found it
+            {
+                return Value;
+            }
             
         }
 
@@ -229,6 +279,42 @@ namespace BinaryTrees
 
     return this;
 }
+            int cmp = key.CompareTo(Key);
+
+            if (cmp < 0)
+            {
+                if (LeftChild != null)
+                    LeftChild = LeftChild.Remove(key);
+            }
+            else if (cmp > 0)
+            {
+                if (RightChild != null)
+                    RightChild = RightChild.Remove(key);
+            }
+            else
+            {
+                if (LeftChild == null && RightChild == null)
+                    return null; 
+
+                if (LeftChild == null)
+                    return RightChild; 
+
+                if (RightChild == null)
+                    return LeftChild; 
+
+                BinaryTreeNode<TKey, TValue> successor = RightChild;
+                while (successor.LeftChild != null)
+                    successor = successor.LeftChild;
+
+                Key = successor.Key;
+                Value = successor.Value;
+
+                RightChild = RightChild.Remove(successor.Key);
+            }
+
+            return this;
+            
+        }
 
         public int KeysToArray(TKey[] keys, int index)
         {

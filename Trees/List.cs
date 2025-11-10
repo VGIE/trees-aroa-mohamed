@@ -1,3 +1,4 @@
+namespace Lists;
 using Lists;
 using System.Collections;
 
@@ -162,3 +163,4 @@ public class List<T> : IList<T>
         
     }
 }
+//TODO #1: Copy your List<T> class (List.cs) to this project and overwrite this file.
