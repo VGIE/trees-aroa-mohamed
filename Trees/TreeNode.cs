@@ -112,7 +112,10 @@ namespace Trees
         public TreeNode<T> Find(T value)
         {
             //TODO #8: Return the node that contains this value (it might be this node or a child). Apply recursively
-    
+            if(Value.Equals(value))
+            {
+            return this;
+            }
             for (int i = 0; i < Children.Count(); i++)
             {
                 if (Children.Get(i).Value.Equals(value))
