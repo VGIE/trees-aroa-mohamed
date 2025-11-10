@@ -279,43 +279,6 @@ namespace BinaryTrees
 
     return this;
 }
-            int cmp = key.CompareTo(Key);
-
-            if (cmp < 0)
-            {
-                if (LeftChild != null)
-                    LeftChild = LeftChild.Remove(key);
-            }
-            else if (cmp > 0)
-            {
-                if (RightChild != null)
-                    RightChild = RightChild.Remove(key);
-            }
-            else
-            {
-                if (LeftChild == null && RightChild == null)
-                    return null; 
-
-                if (LeftChild == null)
-                    return RightChild; 
-
-                if (RightChild == null)
-                    return LeftChild; 
-
-                BinaryTreeNode<TKey, TValue> successor = RightChild;
-                while (successor.LeftChild != null)
-                    successor = successor.LeftChild;
-
-                Key = successor.Key;
-                Value = successor.Value;
-
-                RightChild = RightChild.Remove(successor.Key);
-            }
-
-            return this;
-            
-        }
-
         public int KeysToArray(TKey[] keys, int index)
         {
             if (LeftChild != null)
